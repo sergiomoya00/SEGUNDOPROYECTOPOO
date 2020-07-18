@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFuncionarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFuncionarioLabel_cedula}" for="cedula" />
+                    <h:inputText id="cedula" value="#{funcionarioController.selected.cedula}" title="#{bundle.EditFuncionarioTitle_cedula}" required="true" requiredMessage="#{bundle.EditFuncionarioRequiredMessage_cedula}"/>
+                    <h:outputLabel value="#{bundle.EditFuncionarioLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{funcionarioController.selected.nombre}" title="#{bundle.EditFuncionarioTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditFuncionarioLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{funcionarioController.selected.tipo}" title="#{bundle.EditFuncionarioTitle_tipo}" />
+                    <h:outputLabel value="#{bundle.EditFuncionarioLabel_fechaEntrega}" for="fechaEntrega" />
+                    <h:inputText id="fechaEntrega" value="#{funcionarioController.selected.fechaEntrega}" title="#{bundle.EditFuncionarioTitle_fechaEntrega}" />
+                    <h:outputLabel value="#{bundle.EditFuncionarioLabel_area}" for="area" />
+                    <h:inputText id="area" value="#{funcionarioController.selected.area}" title="#{bundle.EditFuncionarioTitle_area}" />
+                </h:panelGrid>
+                <h:commandLink action="#{funcionarioController.update}" value="#{bundle.EditFuncionarioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFuncionarioViewLink}"/>
+                <br />
+                <h:commandLink action="#{funcionarioController.prepareList}" value="#{bundle.EditFuncionarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFuncionarioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCentrodeatencionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCentrodeatencionLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{centrodeatencionController.selected.codigo}" title="#{bundle.CreateCentrodeatencionTitle_codigo}" required="true" requiredMessage="#{bundle.CreateCentrodeatencionRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{bundle.CreateCentrodeatencionLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{centrodeatencionController.selected.nombre}" title="#{bundle.CreateCentrodeatencionTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.CreateCentrodeatencionLabel_lugar}" for="lugar" />
+                    <h:inputText id="lugar" value="#{centrodeatencionController.selected.lugar}" title="#{bundle.CreateCentrodeatencionTitle_lugar}" />
+                    <h:outputLabel value="#{bundle.CreateCentrodeatencionLabel_ubicacion}" for="ubicacion" />
+                    <h:inputText id="ubicacion" value="#{centrodeatencionController.selected.ubicacion}" title="#{bundle.CreateCentrodeatencionTitle_ubicacion}" />
+                    <h:outputLabel value="#{bundle.CreateCentrodeatencionLabel_capacidad}" for="capacidad" />
+                    <h:inputText id="capacidad" value="#{centrodeatencionController.selected.capacidad}" title="#{bundle.CreateCentrodeatencionTitle_capacidad}" />
+                    <h:outputLabel value="#{bundle.CreateCentrodeatencionLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{centrodeatencionController.selected.tipo}" title="#{bundle.CreateCentrodeatencionTitle_tipo}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{centrodeatencionController.create}" value="#{bundle.CreateCentrodeatencionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{centrodeatencionController.prepareList}" value="#{bundle.CreateCentrodeatencionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCentrodeatencionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

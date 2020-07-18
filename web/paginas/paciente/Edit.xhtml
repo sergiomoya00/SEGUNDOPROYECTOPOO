@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_cedula}" for="cedula" />
+                    <h:inputText id="cedula" value="#{pacienteController.selected.cedula}" title="#{bundle.EditPacienteTitle_cedula}" required="true" requiredMessage="#{bundle.EditPacienteRequiredMessage_cedula}"/>
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{pacienteController.selected.nombre}" title="#{bundle.EditPacienteTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{pacienteController.selected.fechaNacimiento}" title="#{bundle.EditPacienteTitle_fechaNacimiento}" />
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_tipoSangre}" for="tipoSangre" />
+                    <h:inputText id="tipoSangre" value="#{pacienteController.selected.tipoSangre}" title="#{bundle.EditPacienteTitle_tipoSangre}" />
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_nacionalidad}" for="nacionalidad" />
+                    <h:inputText id="nacionalidad" value="#{pacienteController.selected.nacionalidad}" title="#{bundle.EditPacienteTitle_nacionalidad}" />
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_provincia}" for="provincia" />
+                    <h:inputText id="provincia" value="#{pacienteController.selected.provincia}" title="#{bundle.EditPacienteTitle_provincia}" />
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_canton}" for="canton" />
+                    <h:inputText id="canton" value="#{pacienteController.selected.canton}" title="#{bundle.EditPacienteTitle_canton}" />
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{pacienteController.selected.telefono}" title="#{bundle.EditPacienteTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_seguimientopaciente}" for="seguimientopaciente" />
+                    <h:selectOneMenu id="seguimientopaciente" value="#{pacienteController.selected.seguimientopaciente}" title="#{bundle.EditPacienteTitle_seguimientopaciente}" >
+                        <f:selectItems value="#{seguimientopacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_tratamientopaciente}" for="tratamientopaciente" />
+                    <h:selectOneMenu id="tratamientopaciente" value="#{pacienteController.selected.tratamientopaciente}" title="#{bundle.EditPacienteTitle_tratamientopaciente}" >
+                        <f:selectItems value="#{tratamientopacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_pacientehospitalizado}" for="pacientehospitalizado" />
+                    <h:selectOneMenu id="pacientehospitalizado" value="#{pacienteController.selected.pacientehospitalizado}" title="#{bundle.EditPacienteTitle_pacientehospitalizado}" >
+                        <f:selectItems value="#{pacientehospitalizadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPacienteLabel_diagnosticopaciente}" for="diagnosticopaciente" />
+                    <h:selectOneMenu id="diagnosticopaciente" value="#{pacienteController.selected.diagnosticopaciente}" title="#{bundle.EditPacienteTitle_diagnosticopaciente}" >
+                        <f:selectItems value="#{diagnosticopacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{pacienteController.update}" value="#{bundle.EditPacienteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPacienteViewLink}"/>
+                <br />
+                <h:commandLink action="#{pacienteController.prepareList}" value="#{bundle.EditPacienteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPacienteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

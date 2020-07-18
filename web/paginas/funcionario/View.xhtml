@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFuncionarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_cedula}"/>
+                    <h:outputText value="#{funcionarioController.selected.cedula}" title="#{bundle.ViewFuncionarioTitle_cedula}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_nombre}"/>
+                    <h:outputText value="#{funcionarioController.selected.nombre}" title="#{bundle.ViewFuncionarioTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_tipo}"/>
+                    <h:outputText value="#{funcionarioController.selected.tipo}" title="#{bundle.ViewFuncionarioTitle_tipo}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_fechaEntrega}"/>
+                    <h:outputText value="#{funcionarioController.selected.fechaEntrega}" title="#{bundle.ViewFuncionarioTitle_fechaEntrega}"/>
+                    <h:outputText value="#{bundle.ViewFuncionarioLabel_area}"/>
+                    <h:outputText value="#{funcionarioController.selected.area}" title="#{bundle.ViewFuncionarioTitle_area}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{funcionarioController.destroyAndView}" value="#{bundle.ViewFuncionarioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFuncionarioEditLink}"/>
+                <br />
+                <h:commandLink action="#{funcionarioController.prepareCreate}" value="#{bundle.ViewFuncionarioCreateLink}" />
+                <br />
+                <h:commandLink action="#{funcionarioController.prepareList}" value="#{bundle.ViewFuncionarioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFuncionarioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

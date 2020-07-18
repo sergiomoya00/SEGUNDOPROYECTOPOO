@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSeguimientopacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSeguimientopacienteLabel_cedulaPaciente}" for="cedulaPaciente" />
+                    <h:inputText id="cedulaPaciente" value="#{seguimientopacienteController.selected.cedulaPaciente}" title="#{bundle.EditSeguimientopacienteTitle_cedulaPaciente}" required="true" requiredMessage="#{bundle.EditSeguimientopacienteRequiredMessage_cedulaPaciente}"/>
+                    <h:outputLabel value="#{bundle.EditSeguimientopacienteLabel_fechaSeguimiento}" for="fechaSeguimiento" />
+                    <h:inputText id="fechaSeguimiento" value="#{seguimientopacienteController.selected.fechaSeguimiento}" title="#{bundle.EditSeguimientopacienteTitle_fechaSeguimiento}" />
+                    <h:outputLabel value="#{bundle.EditSeguimientopacienteLabel_evolucion}" for="evolucion" />
+                    <h:inputText id="evolucion" value="#{seguimientopacienteController.selected.evolucion}" title="#{bundle.EditSeguimientopacienteTitle_evolucion}" />
+                    <h:outputLabel value="#{bundle.EditSeguimientopacienteLabel_tratamiento}" for="tratamiento" />
+                    <h:inputText id="tratamiento" value="#{seguimientopacienteController.selected.tratamiento}" title="#{bundle.EditSeguimientopacienteTitle_tratamiento}" />
+                    <h:outputLabel value="#{bundle.EditSeguimientopacienteLabel_paciente}" for="paciente" />
+                    <h:selectOneMenu id="paciente" value="#{seguimientopacienteController.selected.paciente}" title="#{bundle.EditSeguimientopacienteTitle_paciente}" required="true" requiredMessage="#{bundle.EditSeguimientopacienteRequiredMessage_paciente}">
+                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditSeguimientopacienteLabel_cedulaFuncionario}" for="cedulaFuncionario" />
+                    <h:selectOneMenu id="cedulaFuncionario" value="#{seguimientopacienteController.selected.cedulaFuncionario}" title="#{bundle.EditSeguimientopacienteTitle_cedulaFuncionario}" >
+                        <f:selectItems value="#{funcionarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{seguimientopacienteController.update}" value="#{bundle.EditSeguimientopacienteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSeguimientopacienteViewLink}"/>
+                <br />
+                <h:commandLink action="#{seguimientopacienteController.prepareList}" value="#{bundle.EditSeguimientopacienteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSeguimientopacienteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

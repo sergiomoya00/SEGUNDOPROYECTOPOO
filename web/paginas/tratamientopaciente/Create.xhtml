@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTratamientopacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTratamientopacienteLabel_cedulaPaciente}" for="cedulaPaciente" />
+                    <h:inputText id="cedulaPaciente" value="#{tratamientopacienteController.selected.cedulaPaciente}" title="#{bundle.CreateTratamientopacienteTitle_cedulaPaciente}" required="true" requiredMessage="#{bundle.CreateTratamientopacienteRequiredMessage_cedulaPaciente}"/>
+                    <h:outputLabel value="#{bundle.CreateTratamientopacienteLabel_nombreTratamiento}" for="nombreTratamiento" />
+                    <h:inputText id="nombreTratamiento" value="#{tratamientopacienteController.selected.nombreTratamiento}" title="#{bundle.CreateTratamientopacienteTitle_nombreTratamiento}" />
+                    <h:outputLabel value="#{bundle.CreateTratamientopacienteLabel_cantidadUnidades}" for="cantidadUnidades" />
+                    <h:inputText id="cantidadUnidades" value="#{tratamientopacienteController.selected.cantidadUnidades}" title="#{bundle.CreateTratamientopacienteTitle_cantidadUnidades}" />
+                    <h:outputLabel value="#{bundle.CreateTratamientopacienteLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{tratamientopacienteController.selected.tipo}" title="#{bundle.CreateTratamientopacienteTitle_tipo}" />
+                    <h:outputLabel value="#{bundle.CreateTratamientopacienteLabel_paciente}" for="paciente" />
+                    <h:selectOneMenu id="paciente" value="#{tratamientopacienteController.selected.paciente}" title="#{bundle.CreateTratamientopacienteTitle_paciente}" required="true" requiredMessage="#{bundle.CreateTratamientopacienteRequiredMessage_paciente}">
+                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tratamientopacienteController.create}" value="#{bundle.CreateTratamientopacienteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tratamientopacienteController.prepareList}" value="#{bundle.CreateTratamientopacienteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTratamientopacienteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

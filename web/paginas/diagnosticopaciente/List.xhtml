@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDiagnosticopacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListDiagnosticopacienteEmpty}" rendered="#{diagnosticopacienteController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{diagnosticopacienteController.items.rowCount > 0}">
+                    <h:outputText value="#{diagnosticopacienteController.pagination.pageFirstItem + 1}..#{diagnosticopacienteController.pagination.pageLastItem + 1}/#{diagnosticopacienteController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{diagnosticopacienteController.previous}" value="#{bundle.Previous} #{diagnosticopacienteController.pagination.pageSize}" rendered="#{diagnosticopacienteController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{diagnosticopacienteController.next}" value="#{bundle.Next} #{diagnosticopacienteController.pagination.pageSize}" rendered="#{diagnosticopacienteController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{diagnosticopacienteController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiagnosticopacienteTitle_cedulaPaciente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cedulaPaciente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiagnosticopacienteTitle_nombreDiagnostico}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreDiagnostico}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiagnosticopacienteTitle_nivel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nivel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiagnosticopacienteTitle_observaciones}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.observaciones}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiagnosticopacienteTitle_tratamiento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tratamiento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDiagnosticopacienteTitle_paciente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.paciente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{diagnosticopacienteController.prepareView}" value="#{bundle.ListDiagnosticopacienteViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{diagnosticopacienteController.prepareEdit}" value="#{bundle.ListDiagnosticopacienteEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{diagnosticopacienteController.destroy}" value="#{bundle.ListDiagnosticopacienteDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{diagnosticopacienteController.prepareCreate}" value="#{bundle.ListDiagnosticopacienteCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListDiagnosticopacienteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

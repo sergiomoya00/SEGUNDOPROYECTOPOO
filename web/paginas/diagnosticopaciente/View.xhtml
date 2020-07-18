@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDiagnosticopacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDiagnosticopacienteLabel_cedulaPaciente}"/>
+                    <h:outputText value="#{diagnosticopacienteController.selected.cedulaPaciente}" title="#{bundle.ViewDiagnosticopacienteTitle_cedulaPaciente}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticopacienteLabel_nombreDiagnostico}"/>
+                    <h:outputText value="#{diagnosticopacienteController.selected.nombreDiagnostico}" title="#{bundle.ViewDiagnosticopacienteTitle_nombreDiagnostico}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticopacienteLabel_nivel}"/>
+                    <h:outputText value="#{diagnosticopacienteController.selected.nivel}" title="#{bundle.ViewDiagnosticopacienteTitle_nivel}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticopacienteLabel_observaciones}"/>
+                    <h:outputText value="#{diagnosticopacienteController.selected.observaciones}" title="#{bundle.ViewDiagnosticopacienteTitle_observaciones}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticopacienteLabel_tratamiento}"/>
+                    <h:outputText value="#{diagnosticopacienteController.selected.tratamiento}" title="#{bundle.ViewDiagnosticopacienteTitle_tratamiento}"/>
+                    <h:outputText value="#{bundle.ViewDiagnosticopacienteLabel_paciente}"/>
+                    <h:outputText value="#{diagnosticopacienteController.selected.paciente}" title="#{bundle.ViewDiagnosticopacienteTitle_paciente}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{diagnosticopacienteController.destroyAndView}" value="#{bundle.ViewDiagnosticopacienteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDiagnosticopacienteEditLink}"/>
+                <br />
+                <h:commandLink action="#{diagnosticopacienteController.prepareCreate}" value="#{bundle.ViewDiagnosticopacienteCreateLink}" />
+                <br />
+                <h:commandLink action="#{diagnosticopacienteController.prepareList}" value="#{bundle.ViewDiagnosticopacienteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDiagnosticopacienteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

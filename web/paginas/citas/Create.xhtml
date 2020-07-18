@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCitasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_codigoCita}" for="codigoCita" />
+                    <h:inputText id="codigoCita" value="#{citasController.selected.codigoCita}" title="#{bundle.CreateCitasTitle_codigoCita}" required="true" requiredMessage="#{bundle.CreateCitasRequiredMessage_codigoCita}"/>
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_area}" for="area" />
+                    <h:inputText id="area" value="#{citasController.selected.area}" title="#{bundle.CreateCitasTitle_area}" />
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{citasController.selected.fecha}" title="#{bundle.CreateCitasTitle_fecha}" />
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_hora}" for="hora" />
+                    <h:inputText id="hora" value="#{citasController.selected.hora}" title="#{bundle.CreateCitasTitle_hora}" />
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_observacion}" for="observacion" />
+                    <h:inputText id="observacion" value="#{citasController.selected.observacion}" title="#{bundle.CreateCitasTitle_observacion}" />
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{citasController.selected.estado}" title="#{bundle.CreateCitasTitle_estado}" />
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_cedulaPaciente}" for="cedulaPaciente" />
+                    <h:selectOneMenu id="cedulaPaciente" value="#{citasController.selected.cedulaPaciente}" title="#{bundle.CreateCitasTitle_cedulaPaciente}" >
+                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_cedulaFuncionario}" for="cedulaFuncionario" />
+                    <h:selectOneMenu id="cedulaFuncionario" value="#{citasController.selected.cedulaFuncionario}" title="#{bundle.CreateCitasTitle_cedulaFuncionario}" >
+                        <f:selectItems value="#{funcionarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateCitasLabel_bitacora}" for="bitacora" />
+                    <h:selectOneMenu id="bitacora" value="#{citasController.selected.bitacora}" title="#{bundle.CreateCitasTitle_bitacora}" >
+                        <f:selectItems value="#{bitacoraController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{citasController.create}" value="#{bundle.CreateCitasSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{citasController.prepareList}" value="#{bundle.CreateCitasShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCitasIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPacientehospitalizadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPacientehospitalizadoLabel_cedulaPaciente}"/>
+                    <h:outputText value="#{pacientehospitalizadoController.selected.cedulaPaciente}" title="#{bundle.ViewPacientehospitalizadoTitle_cedulaPaciente}"/>
+                    <h:outputText value="#{bundle.ViewPacientehospitalizadoLabel_nombrePaciente}"/>
+                    <h:outputText value="#{pacientehospitalizadoController.selected.nombrePaciente}" title="#{bundle.ViewPacientehospitalizadoTitle_nombrePaciente}"/>
+                    <h:outputText value="#{bundle.ViewPacientehospitalizadoLabel_diagnostico}"/>
+                    <h:outputText value="#{pacientehospitalizadoController.selected.diagnostico}" title="#{bundle.ViewPacientehospitalizadoTitle_diagnostico}"/>
+                    <h:outputText value="#{bundle.ViewPacientehospitalizadoLabel_fechaInicio}"/>
+                    <h:outputText value="#{pacientehospitalizadoController.selected.fechaInicio}" title="#{bundle.ViewPacientehospitalizadoTitle_fechaInicio}"/>
+                    <h:outputText value="#{bundle.ViewPacientehospitalizadoLabel_fechaSalida}"/>
+                    <h:outputText value="#{pacientehospitalizadoController.selected.fechaSalida}" title="#{bundle.ViewPacientehospitalizadoTitle_fechaSalida}"/>
+                    <h:outputText value="#{bundle.ViewPacientehospitalizadoLabel_area}"/>
+                    <h:outputText value="#{pacientehospitalizadoController.selected.area}" title="#{bundle.ViewPacientehospitalizadoTitle_area}"/>
+                    <h:outputText value="#{bundle.ViewPacientehospitalizadoLabel_paciente}"/>
+                    <h:outputText value="#{pacientehospitalizadoController.selected.paciente}" title="#{bundle.ViewPacientehospitalizadoTitle_paciente}"/>
+                    <h:outputText value="#{bundle.ViewPacientehospitalizadoLabel_cedulaFuncionario}"/>
+                    <h:outputText value="#{pacientehospitalizadoController.selected.cedulaFuncionario}" title="#{bundle.ViewPacientehospitalizadoTitle_cedulaFuncionario}"/>
+                    <h:outputText value="#{bundle.ViewPacientehospitalizadoLabel_centroAtencion}"/>
+                    <h:outputText value="#{pacientehospitalizadoController.selected.centroAtencion}" title="#{bundle.ViewPacientehospitalizadoTitle_centroAtencion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pacientehospitalizadoController.destroyAndView}" value="#{bundle.ViewPacientehospitalizadoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPacientehospitalizadoEditLink}"/>
+                <br />
+                <h:commandLink action="#{pacientehospitalizadoController.prepareCreate}" value="#{bundle.ViewPacientehospitalizadoCreateLink}" />
+                <br />
+                <h:commandLink action="#{pacientehospitalizadoController.prepareList}" value="#{bundle.ViewPacientehospitalizadoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPacientehospitalizadoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

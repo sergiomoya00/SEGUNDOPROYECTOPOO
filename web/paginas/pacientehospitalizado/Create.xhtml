@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePacientehospitalizadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePacientehospitalizadoLabel_cedulaPaciente}" for="cedulaPaciente" />
+                    <h:inputText id="cedulaPaciente" value="#{pacientehospitalizadoController.selected.cedulaPaciente}" title="#{bundle.CreatePacientehospitalizadoTitle_cedulaPaciente}" required="true" requiredMessage="#{bundle.CreatePacientehospitalizadoRequiredMessage_cedulaPaciente}"/>
+                    <h:outputLabel value="#{bundle.CreatePacientehospitalizadoLabel_nombrePaciente}" for="nombrePaciente" />
+                    <h:inputText id="nombrePaciente" value="#{pacientehospitalizadoController.selected.nombrePaciente}" title="#{bundle.CreatePacientehospitalizadoTitle_nombrePaciente}" />
+                    <h:outputLabel value="#{bundle.CreatePacientehospitalizadoLabel_diagnostico}" for="diagnostico" />
+                    <h:inputText id="diagnostico" value="#{pacientehospitalizadoController.selected.diagnostico}" title="#{bundle.CreatePacientehospitalizadoTitle_diagnostico}" />
+                    <h:outputLabel value="#{bundle.CreatePacientehospitalizadoLabel_fechaInicio}" for="fechaInicio" />
+                    <h:inputText id="fechaInicio" value="#{pacientehospitalizadoController.selected.fechaInicio}" title="#{bundle.CreatePacientehospitalizadoTitle_fechaInicio}" />
+                    <h:outputLabel value="#{bundle.CreatePacientehospitalizadoLabel_fechaSalida}" for="fechaSalida" />
+                    <h:inputText id="fechaSalida" value="#{pacientehospitalizadoController.selected.fechaSalida}" title="#{bundle.CreatePacientehospitalizadoTitle_fechaSalida}" />
+                    <h:outputLabel value="#{bundle.CreatePacientehospitalizadoLabel_area}" for="area" />
+                    <h:inputText id="area" value="#{pacientehospitalizadoController.selected.area}" title="#{bundle.CreatePacientehospitalizadoTitle_area}" />
+                    <h:outputLabel value="#{bundle.CreatePacientehospitalizadoLabel_paciente}" for="paciente" />
+                    <h:selectOneMenu id="paciente" value="#{pacientehospitalizadoController.selected.paciente}" title="#{bundle.CreatePacientehospitalizadoTitle_paciente}" required="true" requiredMessage="#{bundle.CreatePacientehospitalizadoRequiredMessage_paciente}">
+                        <f:selectItems value="#{pacienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePacientehospitalizadoLabel_cedulaFuncionario}" for="cedulaFuncionario" />
+                    <h:selectOneMenu id="cedulaFuncionario" value="#{pacientehospitalizadoController.selected.cedulaFuncionario}" title="#{bundle.CreatePacientehospitalizadoTitle_cedulaFuncionario}" >
+                        <f:selectItems value="#{funcionarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePacientehospitalizadoLabel_centroAtencion}" for="centroAtencion" />
+                    <h:selectOneMenu id="centroAtencion" value="#{pacientehospitalizadoController.selected.centroAtencion}" title="#{bundle.CreatePacientehospitalizadoTitle_centroAtencion}" >
+                        <f:selectItems value="#{centrodeatencionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pacientehospitalizadoController.create}" value="#{bundle.CreatePacientehospitalizadoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pacientehospitalizadoController.prepareList}" value="#{bundle.CreatePacientehospitalizadoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePacientehospitalizadoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
